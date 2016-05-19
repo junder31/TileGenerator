@@ -12,8 +12,8 @@ public class Tile {
     }
 
     public enum RotationDirection {
-        CLOCK_WISE(1),
-        COUNTER_CLOCK_WISE(-1);
+        CLOCK_WISE(-1),
+        COUNTER_CLOCK_WISE(1);
 
         private int sign;
 
@@ -74,7 +74,7 @@ public class Tile {
         TileVertex[] rotatedVertices = new TileVertex[4];
 
         for(int i = 0; i < positions.length; i++) {
-            rotatedVertices[i] = vertices[(i + direction.getSign()) % positions.length];
+            rotatedVertices[i] = vertices[(i + direction.getSign() + positions.length) % positions.length];
         }
 
         return new Tile(rotatedVertices);
